@@ -13,7 +13,10 @@ describe('Logot User', () => {
         // 6. Enter correct email address and password
         // 7. Click 'login' button
         // 8. Verify that 'Logged in as username' is visible
+        cy.loginUserWithCorrectEmailAndPassword();
+
         // 9. Click 'Logout' button
+
         // 10. Verify that user is navigated to login page
 
     })

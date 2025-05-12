@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 
 describe('Register User', () => {
-  it('passes', () => {
+  it('should register user and delete account', () => {
 
     // 1. Launch browser
     // 2. Navigate to url 'http://automationexercise.com'

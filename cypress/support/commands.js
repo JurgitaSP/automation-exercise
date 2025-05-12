@@ -134,6 +134,18 @@ Cypress.Commands.add('deleteAccount', () => {
     cy.url().should('include', '/');
 });
 
+Cypress.Commands.add('loginUserWithCorrectEmailAndPassword', () => {
+    cy.get('[href="/login"]').click();
+    cy.get('.login-form h2').should('have.text', 'Login to your account');
+    cy.get('.login-form h2').should('have.text', 'Login to your account');
+    cy.get('[data-qa="login-email"]').type('Junius.Romaguera77@hotmail.com');
+    cy.get('[data-qa="login-password"]').type('MDgTLFc4EPMgGFs');
+    cy.get('[data-qa="login-button"]').click();
+
+    cy.get(':nth-child(10) > a').should('include', ` Logged in as`);
+});
+
+
 Cypress.Commands.add('loginUserWithIncorrectEmailAndPassword', () => {
     cy.get('[href="/login"]').click();
     cy.get('.login-form h2').should('have.text', 'Login to your account');

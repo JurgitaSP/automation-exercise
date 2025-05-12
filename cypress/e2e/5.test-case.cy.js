@@ -3,7 +3,7 @@
 describe('Register User with existing email', () => {
     it('passes', () => {
 
-        //  1. Launch browser
+        // 1. Launch browser
         // 2. Navigate to url 'http://automationexercise.com'
         // 3. Verify that home page is visible successfully
         cy.visitAndVerifyHomePage();
@@ -15,18 +15,14 @@ describe('Register User with existing email', () => {
         cy.get('.signup-form h2').should('have.text', 'New User Signup!');
 
         // 6. Enter name and already registered email address
-        const name = Cypress.env('NAME');
-        const email = Cypress.env('EMAIL');
-
-        cy.get('[data-qa="signup-name"]').type('NAME');
-        cy.get('[data-qa="signup-email"]').type('EMAIL');
+        cy.get('[data-qa="signup-name"]').type('Junius');
+        cy.get('[data-qa="signup-email"]').type('Junius.Romaguera77@hotmail.com');
 
         // 7. Click 'Signup' button
         cy.get('[data-qa="signup-button"]').click();
 
         // 8. Verify error 'Email Address already exist!' is visible
-         cy.contains('Email Address already exist!').should('be.visible');
-
+        cy.contains('Email Address already exist!').should('be.visible');
 
     })
 })

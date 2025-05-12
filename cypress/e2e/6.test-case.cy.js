@@ -17,8 +17,8 @@ describe('Contact Us Form', () => {
             .and('be.visible');
 
         // 6. Enter name, email, subject and message
-        cy.get('[data-qa="name"]').type('validuser@example.com');
-        cy.get('[data-qa="email"]').type('correctpassword');
+        cy.get('[data-qa="name"]').type('Junius');
+        cy.get('[data-qa="email"]').type('validuser@example.com');
         cy.get('[data-qa="subject"]').type('subject');
         cy.get('[data-qa="message"]').type('Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
 
