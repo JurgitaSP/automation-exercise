@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 
 describe('Verify All Products and product detail page', () => {
-    it('passes', () => {
+    it('should verify all products and product detail page', () => {
 
         // 1. Launch browser
         // 2. Navigate to url 'http://automationexercise.com'

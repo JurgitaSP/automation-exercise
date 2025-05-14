@@ -9,7 +9,7 @@ describe('Verify Subscription in Cart page', () => {
         cy.visitAndVerifyHomePage();
 
         // 4. Click 'Cart' button
-        cy.clickAddToCartBtn();
+        cy.get('.shop-menu > .nav > :nth-child(3) > a').click();
 
         // 5. Scroll down to footer
         cy.get('#footer').scrollIntoView();
@@ -24,6 +24,11 @@ describe('Verify Subscription in Cart page', () => {
         cy.get('#subscribe').click();
 
         // 8. Verify success message 'You have been successfully subscribed!' is visible
+        cy.get("#success-subscribe")
+            .invoke("text")
+            .then((text) => {
+                expect(text.trim()).to.equal("You have been successfully subscribed!");
+            });
 
     })
 })

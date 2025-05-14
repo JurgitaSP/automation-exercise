@@ -1,6 +1,6 @@
 /// <reference types = "cypress" />
 
-describe('template spec', () => {
+describe('Verify Scroll Up Using "Arrow" Button And Scroll Down Functionality', () => {
     it('passes', () => {
 
         // 1. Launch browser
@@ -23,6 +23,6 @@ describe('template spec', () => {
         cy.get('.active > :nth-child(1) > h2')
             .should('have.text', 'Full-Fledged practice website for Automation Engineers')
             .and('be.visible');
-            
+
     })
 })

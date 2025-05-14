@@ -1,6 +1,6 @@
 /// <reference types = "cypress" />
 
-describe('template spec', () => {
+describe('Verify Scroll Up Without "Arrow" Button And Scroll Down functionality', () => {
     it('passes', () => {
 
         // 1. Launch browser

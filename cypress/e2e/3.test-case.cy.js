@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 
 describe('Login User with incorrect email and password', () => {
-    it('passes', () => {
+    it('should not login user with incorrect email and password', () => {
 
         // 1. Launch browser
         // 2. Navigate to url 'http://automationexercise.com'
@@ -15,5 +15,5 @@ describe('Login User with incorrect email and password', () => {
         // 8. Verify error 'Your email or password is incorrect!' is visible
         cy.loginUserWithIncorrectEmailAndPassword();
 
-    })
+    });
 })

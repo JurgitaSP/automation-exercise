@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 
-describe('template spec', () => {
-    it('passes', () => {
+describe('Search Product', () => {
+    it('shouls search product', () => {
 
         // 1. Launch browser
         // 2. Navigate to url 'http://automationexercise.com'
@@ -22,10 +22,9 @@ describe('template spec', () => {
         // 7. Verify 'SEARCHED PRODUCTS' is visible
         cy.url().should('include', '/products?search=Fancy%20Green%20Top');
         cy.get('.productinfo > p').should('have.text', 'Fancy Green Top');
-    
+
         // 8. Verify all the products related to search are visible
-
-
+        cy.get(".features_items").find(".product-image-wrapper").should("have.length.greaterThan", 0);
 
     })
 })
