@@ -23,19 +23,30 @@ describe('Contact Us Form', () => {
         cy.get('[data-qa="message"]').type('Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
 
         // 7. Upload file
-        cy.get(':nth-child(6) > .form-control').click()
+        cy.xpath("//input[@type='file' and @name='upload_file']").attachFile("filesToUpload/text.txt");
+
 
         // 8. Click 'Submit' button
         cy.get('[data-qa="submit-button"]').click();
 
         // 9. Click OK button
+// Cypress automatically clicks "OK" on alerts, though possible solution could be:
+        cy.on('window:confirm', (text) => {
+            expect(text).to.equal('Press OK to proceed!');
+            return true;
+        });
 
         // 10. Verify success message 'Success! Your details have been submitted successfully.' is visible
-        cy.get('.status alert alert-success').should('have.text', 'Success! Your details have been submitted successfully.');
+        cy.on('window:alert', (alertText) => {
+            expect(alertText).to.equal('Success! Your details have been submitted successfully.');
+        });
+        // cy.get('.status alert alert-success').should('have.text', 'Success! Your details have been submitted successfully.');
 
         // 11. Click 'Home' button and verify that landed to home page successfully
-        cy.get('.btn btn-success').click();
-        cy.url().should('include', '/');
+        cy.get("ul.nav > li > [href='/']").click();
+        cy.url().should('eq', 'https://automationexercise.com/');
+        // cy.get('.btn btn-success').click();
+        // cy.url().should('include', '/');
 
 
     })

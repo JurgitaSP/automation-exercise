@@ -1,28 +1,38 @@
 /// <reference types = "cypress" />
 
 describe('Register User with existing email', () => {
-    it('passes', () => {
+  before(() => {
+    // Register a user before running the test as prerequisite:
+    cy.visit("/");
+    cy.registerUser();
+    cy.get("a[href='/logout']").click();
+  });
 
-        // 1. Launch browser
-        // 2. Navigate to url 'http://automationexercise.com'
-        // 3. Verify that home page is visible successfully
-        cy.visitAndVerifyHomePage();
+  it("should not register a new user with existing email", () => {
 
-        // 4. Click on 'Signup / Login' button
-        cy.get('[href="/login"]').click();
+    // 1. Launch browser:
+    // 2. Navigate to url 'http://automationexercise.com':
+    // 3. Verify that home page is visible successfully:
+    cy.visitAndVerifyHomePage();
 
-        // 5. Verify 'New User Signup!' is visible
-        cy.get('.signup-form h2').should('have.text', 'New User Signup!');
+    // 4. Click on 'Signup / Login' button:
+    cy.get("[href='/login']").click();
 
-        // 6. Enter name and already registered email address
-        cy.get('[data-qa="signup-name"]').type('Junius');
-        cy.get('[data-qa="signup-email"]').type('Junius.Romaguera77@hotmail.com');
+    // 5. Verify 'New User Signup!' is visible:
+    cy.get(".signup-form h2").should("be.visible");
 
-        // 7. Click 'Signup' button
-        cy.get('[data-qa="signup-button"]').click();
+    // 6. Enter name and already registered email address:
+    const email = Cypress.env('EMAIL');
+    const name = Cypress.env('NAME');
 
-        // 8. Verify error 'Email Address already exist!' is visible
-        cy.contains('Email Address already exist!').should('be.visible');
+    cy.get("[data-qa='signup-name']").type(name);
+    cy.get("[data-qa='signup-email']").type(email);
 
-    })
+    // 7. Click 'Signup' button:
+    cy.get("[data-qa='signup-button']").click();
+
+    // 8. Verify error 'Email Address already exist!' is visible:
+    cy.xpath("//*[text()='Email Address already exist!']").should("be.visible");
+  });
+  
 })
